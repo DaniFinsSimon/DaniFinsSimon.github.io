@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="dani.css">
+</head>
+<body>
+<ul>
+
+
+
+
+
+    <li>
+        <a href="index.html" class="ui">Home</a>
+    </li>
+
+
+
+
+    <li>
+        <a href="you.html" class="ui">Learn</a>
+    </li>
+
+
+    <li>
+        <a href="games.html" class="ui">Some games</a>
+    </li>
+
+
+
+
+
+</ul>
+
+<h1>How much do I know about proggaming?</h1>
+
+<p>Currently, I still trying to <u>improve</u> my proggaming level, and I am on my way to do that, but I have a long path to keep
+learning<br>
+I am studying at <a href="http://bhs.berkeleyschools.net/">Berkeley High School</a> in 5th Intro to Comp Prog 2017
+    5 with Mr.Holston.</p>
+
+    <h2> Some things that I am trying to learn nowadays: </h2>
+<meta>
+    All that involves coding and learning new stuff is always super interesting for me. I also love to do a lot of sport such as riding my bike.
+</meta>
+
+<h2>Places to ride my mountain bike
+</h2>
+<style>
+    #map {
+        height: 400px;
+        width: 800PX;
+        margin-left: 80px;
+
+    }
+</style>
+</head>
+<body>
+<p>As said before, I love riding my bikes and this are ones of my favourite parks to ride it.</p>
+<div id="map"></div>
+
+
+
+
+    <script>
+        function initMap() {
+            var mapDiv = document.getElementById('map');
+
+            var map = new google.maps.Map(mapDiv, {
+                zoom: 11,
+                center: {lat:37.889518, lng: -122.238917},
+                gestureHandling: 'greedy',
+                mapTypeId: 'satellite'
+
+
+            });
+
+
+
+            var marker1 = new google.maps.Marker({
+                position: {lat:37.889518, lng: -122.238917},
+                map: map
+            });
+            var info1 = new google.maps.InfoWindow({
+                content: '<marquee>Tilden Park</marquee>'
+            });
+            var marker2 = new google.maps.Marker({
+                position: {lat:37.812651, lng: -122.189759},
+                map: map
+            });
+            var info2 = new google.maps.InfoWindow({
+                content: '<marquee>Joaqin Miller Park</marquee>'
+            });
+
+            var marker3 = new google.maps.Marker({
+                position: {lat:37.872085, lng: -122.209629},
+                map: map
+            });
+            var info3 = new google.maps.InfoWindow({
+                content: '<marquee>Siesta Valley</marquee>'
+            });
+            var marker4 = new google.maps.Marker({
+                position: {lat:37.934907, lng: -122.138224},
+                map: map
+            });
+            var info4 = new google.maps.InfoWindow({
+                content: '<marquee>Briones Regional Park</marquee><img src="http://www.davidsanger.com/images/california/3-67-36.bayridgetrail.m.jpg" width="140" height="100">'
+            });
+
+            var marker5 = new google.maps.Marker({
+                position: {lat:37.937108, lng: -122.278626},
+                map: map
+            });
+            var info5 = new google.maps.InfoWindow({
+                content: '<marquee>Wild Canyon Regional Park</marquee>'
+            });
+
+            marker1.addListener('click', function() {
+                info1.open(map, marker1);
+
+            });
+            marker2.addListener('click', function() {
+                info2.open(map, marker2);
+            });
+            marker3.addListener('click', function() {
+                info3.open(map, marker3);
+
+            });
+            marker4.addListener('click', function() {
+                info4.open(map, marker4);
+
+
+            });
+            marker5.addListener('click', function() {
+                info5.open(map, marker5);
+
+
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrSAqX0DuI-ZA3xrvnSZ_atK5GvXFelQQ&callback=initMap">
+    </script>
+
+<h2> My favourite day in my life</h2>
+<p> The 2010 FIFA World Cup Final (also known as the Battle of Johannesburg) was a football match that took place on 11 July 2010 at Soccer City in Johannesburg, South Africa, to determine the winner of the 2010 FIFA World Cup. Spain defeated the Netherlands 1–0 with a goal from Andrés Iniesta four minutes from the end of extra time. English referee Howard Webb was selected to officiate the match, which was marked by an unusually high number of yellow cards.[2][3]
+
+</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bVN5zo4KHR4" id="vi" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<p><a href="https://www.youtube.com/watch?v=bVN5zo4KHR4">Youtube Goal API Reference</a></p>
+</body>
+
+</body>
+</html>

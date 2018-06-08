@@ -2,120 +2,140 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Word Guesser Starter Code</title>
+    <meta name="viewport" content="width=device-width" >
+    <title>JS Bin</title>
     <link rel="stylesheet" href="dani.css">
 </head>
 <body>
+<ul>
 
 
 
-<div id="guess_display"></div>
 
 
-<form id="guess_form">
-    <label>Guess a letter:
-        <input type="text" id="guess_input">
-    </label>
-</form>
+    <li>
+        <a href="index.html" class="ui">Home</a>
+    </li>
+</ul>
+<h3>Exciting Quiz Time!</h3>
 
-<div id="guess_status"></div>
+<form id="quiz-form">
 
-<script>
-    // Store DOM elements in variables
-    var guessForm = document.getElementById("guess_form");
-    var guessDisplay = document.getElementById("guess_display");
-    var guessLettersDisplay = document.getElementById("guess_letters_display");
-    var guessInput = document.getElementById("guess_input");
-    var guessStatus = document.getElementById("guess_status");
+    <fieldset>
+        <legend>What language is this programmed in?</legend>
+        <label><input name="question1" value="javascript" type="radio">JavaScript</label><br>
+        <label><input name="question1" value="python" type="radio">Python</label><br>
+        <label><input name="question1" value="java" type="radio">Java</label><br>
+    </fieldset>
 
-    // Initialize game state variables
-    var secretWord = "programming";
-    var guessedWord = [];
-    var guessedLetters = [];
-    for (var i = 0; i < secretWord.length; i++) {
-        guessedWord[i] = "_";
-    }
 
-    // Returns true if its a correct guess -
-    //  if the letter is anywhere in the word
-    // Also updates guessedWord and guessedLetters
-    var checkLetterGuess = function(letter) {
-        var foundLetter = false;
-        for (var i = 0; i < secretWord.length; i++) {
-            if (secretWord[i] == letter) {
-                guessedWord[i] = letter;
-                foundLetter = true;
+    <fieldset>
+        <legend>Does this code have CSS on it?</legend>
+        <label><input name="question2" value="yes" type="radio">Yes</label><br>
+        <label><input name="question2" value="no" type="radio">No</label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend> What proggraming language of these is the oldest?</legend>
+
+        <label><input name="question3" value="html" type="radio">Html</label><br>
+        <label><input name="question3" value="fortran" type="radio">Fortran</label><br>
+        <label><input name="question3" value="jeje" type="radio"> JavaScript</label><br>
+    </fieldset>
+
+
+    <fieldset>
+        <legend> What is the proggaming language most used now?</legend>
+
+        <label><input name="question4" value="html" type="radio">CSS</label><br>
+        <label><input name="question4" value="hola" type="radio"> JavaScript</label><br>
+        <label><input name="question4" value="fortran" type="radio">Python</label><br>
+
+    </fieldset>
+
+
+    <fieldset>
+        <legend>Are there any images in this website?</legend>
+        <label><input name="question5" value="popo" type="radio">Yes</label><br>
+        <label><input name="question5" value="python" type="radio">No</label><br>
+    </fieldset>
+
+
+    <div id="results"></div>
+    <div id="score">Score: </div>
+    <button type="submit">Check me</button>
+
+
+
+
+    <script>
+        var score=0;
+
+        var quizForm = document.getElementById("quiz-form");
+        quizForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // resultsDiv is the div to display the results in
+            var resultsDiv = document.getElementById("results");
+
+            // answer1 stores whatever <input> element that they checked
+            //  or null if they didn't check any answer
+            var answer1 = document.querySelector('[name="question1"]:checked');
+            var answer2 = document.querySelector('[name="question2"]:checked');
+            var answer3 = document.querySelector('[name="question3"]:checked');
+            var answer4 = document.querySelector('[name="question4"]:checked');
+            var answer5 = document.querySelector('[name="question5"]:checked');
+            if (!answer1 || !answer2 || !answer3 || !answer4 || !answer5 ) {
+                resultsDiv.innerHTML = "You didn't check everything! 😞 ";
+
+            } else {
+                // answer1.value is the value attribute of the checked <input>
+                if (answer1.value === "javascript"){
+                    score +=1 ;
+                    document.getElementById("score").innerHTML = score /5;
+
+                } if (answer2.value === "yes"){
+                    score +=1 ;
+                    document.getElementById("score").innerHTML = score;
+
+                }
+                if (answer3.value === "fortran"){
+
+                    score +=1 ;
+                    document.getElementById("score").innerHTML = score;
+                }
+                if (answer4.value === "hola"){
+
+                    score +=1 ;
+                    document.getElementById("score").innerHTML = score;
+                }
+                if (answer5.value === "python") {
+                    score +=1 ;
+                    document.getElementById("score").innerHTML = score;
+                }
+                if (score === 5){
+                    resultsDiv.innerHTML = "You got it!";
+                    score=0;
+                }
+
+                else {
+                    resultsDiv.innerHTML = "Try again!";
+                    score=0;
+                }
+
+
+
+
             }
-        }
-        guessedLetters.push(letter);
-        return foundLetter;
-    };
-
-    // Returns true if they guessed the whole word
-    var hasWon = function() {
-        for (var i = 0; i< secretWord.length;i++)  //using a loop
-            if (secretWord[i] != guessedWord[i]) {
-//if (secretWord == guessedWord.join("")) {
-                return false;                       //reversed false/true
-            }
-        return true;
-    };
-
-
-    var displayGuessedWord = function() {
-        guessDisplay.innerHTML = "Current correct: "
-            +"<br>" +guessedWord.join(" ");
-//console.log(guessedWord);
-
-    };
-
-    var displayGuessedLetters = function() {
-//console.log(guessedLetters);
-        guessLettersDisplay.innerHTML = "Letters guessed: "
-            +"<br>" +guessedLetters;
-
-    };
-
-    guessForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        var foundLetter = checkLetterGuess(guessInput.value);
-        if (foundLetter) {
-            guessStatus.innerHTML = "That's one more, keep working";
-//displayGuessedLetters();
-        } else {
-            guessStatus.innerHTML = "Almost buddy,keep trying";
-//displayGuessedLetters();
-        }
-        if (hasWon()) {
-            guessStatus.innerHTML = "There's a winner??"
-                +"<br>" + "Yeeeessss!"+"<br>" + "That's youu";
-        }
-        displayGuessedWord();
-        displayGuessedLetters();
-        guessInput.value = "";
-    });
-    displayGuessedWord();
-    displayGuessedLetters();
-    // Step 0: Read through the code and understand it
-    // Step 1: Implement guessLetter
-    // Step 2: Implement hasWon
-    // Bonus Steps:
-    // - Randomly generate a word for each game
-    //   by pulling from an array
-    // - Come up with a scoring mechanism --
-    //    you can declare game over in a # of guesses
-    //    or just track number of guesses and display it
-    // - Display the letters they've already guessed
-    // - Implement error checking for duplicate guesses
-    // - Make way cooler win and lose states!
-
-</script>
 
 
 
 
+        });
 
 
+
+
+    </script>
 </body>
 </html>

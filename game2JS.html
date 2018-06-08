@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MAD LIBS</title>
+    <link rel="stylesheet" href="dani.css">
+
+
+</head>
+
+<ul>
+
+
+
+
+
+    <li>
+        <a href="mainpage.html" class="ui">Home</a>
+    </li>
+
+    <li>
+        <a href="games.html" class="ui">Different games</a>
+    </li>
+</ul>
+
+<body>
+
+<marquee><h1>Mad Libs</h1></marquee>
+
+<form id="lib-form">
+    <label>
+        Name: <input type="text" id="noun">
+        Verb: <input type="text" id="verb"></br>
+        Adv: <input type="text" id="adv">
+        Adj: <input type="text" id="adj">
+
+
+
+    </label>
+    <br/>
+    <button type="submit">Generate!</button>
+</form>
+
+<div id="story"></div>
+
+<script>
+
+
+    var libForm = document.getElementById("lib-form");
+    libForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+
+        var nounVal = document.getElementById("noun").value;
+        var verbVal = document.getElementById("verb").value;
+        var advVal = document.getElementById("adv").value;
+        var adjVal = document.getElementById("adj").value;
+
+        if(adjVal=="happy"){
+            adjVal="😊";
+        }
+
+        if(adjVal=="sad"){
+            adjVal="😢";
+        }
+
+
+
+
+        var storyDiv = document.getElementById("story");
+        storyDiv.innerHTML =  "The great big " + nounVal +  adjVal + " went to the store really " + advVal + " ,but then someone " + verbVal + " into him ";
+
+
+
+    });
+</script>
+</body>
+
+</>
+</html>
