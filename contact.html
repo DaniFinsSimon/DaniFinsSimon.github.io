@@ -22,7 +22,7 @@
         }
 
         input[type=submit] {
-            background-color: #4CAF50;
+            background-color: lightblue;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -31,7 +31,7 @@
         }
 
         input[type=submit]:hover {
-            background-color: #45a049;
+            background-color: white;
         }
 
         .container {
@@ -83,14 +83,17 @@
         <label for="lname">Last Name</label>
         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-        <label for="country">Country</label>
+        <label for="country">Where are you from?</label>
         <select id="country" name="country">
-            <option value="australia">Australia</option>
+            <option value="australia">Europe</option>
             <option value="canada">Canada</option>
             <option value="usa">USA</option>
+            <option value="southamerica">South America</option>
+            <option value="africa">Africa</option>
+            <option value="asia">Asia</option>
         </select>
 
-        <label for="subject">Subject</label>
+        <label for="subject">Why do you want to contant me?</label>
         <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
         <input type="submit" value="Submit">
